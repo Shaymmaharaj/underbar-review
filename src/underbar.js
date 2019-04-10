@@ -108,15 +108,27 @@ return receipt;
   _.uniq = function(array, isSorted, iterator) {
     var receipt = [];
 
-    for(var i = 0; i < array.length;  i++){
-        for(var j = 0; j < receipt.length; j++){
-          if(array[i] !== receipt[j]){
-            receipt.push(array[i])
-          }
-        }
-        
-    }
+//isSorted? cur === new
+  if(isSorted){
+for(var i = 0; i < array.length; i++) {
+  if(array[i] === array[i+1]) {
+    continue;
+  } else{
+    receipt.push(array[i]);
+    } 
   return receipt
+}
+}
+//else evaluate for equality with results
+    for(var i = 0; i < array.length;  i++){
+      if(!receipt.includes(array[i])){
+        receipt.push(array[i])      
+      }
+         
+    }
+
+  return receipt
+
   };
 
 
